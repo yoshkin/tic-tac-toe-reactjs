@@ -75,6 +75,7 @@ class Game extends React.Component {
             history: history.concat([{
                 squares: squares,
                 currentLocation: getLocationOfMove(i),
+                historyStep: history.length,
             }]),
             stepNumber: history.length,
             xIsNext: !this.state.xIsNext,
@@ -96,11 +97,11 @@ class Game extends React.Component {
         const moves = history.map((step, move) => {
             const currentLocation = step.currentLocation ? `(${step.currentLocation})` : '';
             const classButton = (move === this.state.stepNumber) ? 'btn-green' : '';
-            const desc = move ?
-                'Go to move #' + move :
+            const desc = step.historyStep ?
+                'Go to move #' + step.historyStep :
                 'Go to game start';
             return (
-                <li key={move}>
+                <li key={step.historyStep}>
                     <button className={classButton} onClick={() => this.jumpTo(move)}>{`${desc} ${currentLocation}`}</button>
                 </li>
             );
@@ -126,10 +127,19 @@ class Game extends React.Component {
                 </div>
                 <div className="game-info">
                     <div>{status}</div>
+                    <button className="button" onClick={() => this.sortMoves()}>
+                        Sort moves
+                    </button>
                     <ol>{moves}</ol>
                 </div>
             </div>
         );
+    }
+
+    sortMoves() {
+        this.setState({
+            history: this.state.history.reverse(),
+        });
     }
 }
 
