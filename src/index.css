@@ -48,3 +48,6 @@ ol, ul {
 .game-info {
     margin-left: 20px;
 }
+.winner-squares {
+    background: #7af17a;
+}
