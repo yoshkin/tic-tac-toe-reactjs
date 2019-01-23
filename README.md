@@ -6,7 +6,7 @@
 3. **(Done)** ~~Rewrite Board to use two loops to make the squares instead of hardcoding them.~~
 4. Add a toggle button that lets you sort the moves in either ascending or descending order.
 5. **(Done)** ~~When someone wins, highlight the three squares that caused the win.~~
-6. When no one wins, display a message about the result being a draw.
+6. **(Done)** ~~When no one wins, display a message about the result being a draw.~~
 
 ### Installation
 1. ```git clone https://github.com/yoshkin/tic-tac-toe-reactjs.git```

@@ -95,7 +95,7 @@ class Game extends React.Component {
 
         const moves = history.map((step, move) => {
             const currentLocation = step.currentLocation ? `(${step.currentLocation})` : '';
-            const classButton = move === this.state.stepNumber ? 'btn-green' : '';
+            const classButton = (move === this.state.stepNumber) ? 'btn-green' : '';
             const desc = move ?
                 'Go to move #' + move :
                 'Go to game start';
@@ -109,9 +109,12 @@ class Game extends React.Component {
         let status;
         if (winner) {
             status = 'Winner: ' + winner;
+        } else if (history.length === 10) {
+            status = 'No one won. Pls go to game start.';
         } else {
             status = 'Next player: ' + (this.state.xIsNext ? 'X' : 'O');
         }
+
         return (
             <div className="game">
                 <div className="game-board">
