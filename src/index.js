@@ -57,6 +57,7 @@ class Game extends React.Component {
         this.state = {
             history: [{
                 squares: Array(9).fill(null),
+                historyStep: 0,
             }],
             stepNumber: 0,
             xIsNext: true,
@@ -86,6 +87,12 @@ class Game extends React.Component {
         this.setState({
             stepNumber: step,
             xIsNext: (step % 2) === 0,
+        });
+    }
+
+    sortMoves() {
+        this.setState({
+            history: this.state.history.reverse(),
         });
     }
 
@@ -134,12 +141,6 @@ class Game extends React.Component {
                 </div>
             </div>
         );
-    }
-
-    sortMoves() {
-        this.setState({
-            history: this.state.history.reverse(),
-        });
     }
 }
 
