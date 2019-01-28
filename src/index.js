@@ -72,14 +72,17 @@ class Game extends React.Component {
             return;
         }
         squares[i] = this.state.xIsNext ? 'X' : 'O';
-        this.setState({
-            history: history.concat([{
-                squares: squares,
-                currentLocation: getLocationOfMove(i),
-                historyStep: history.length,
-            }]),
-            stepNumber: history.length,
-            xIsNext: !this.state.xIsNext,
+
+        this.setState((state) => {
+            return {
+                history: history.concat([{
+                    squares: squares,
+                    currentLocation: getLocationOfMove(i),
+                    historyStep: history.length,
+                }]),
+                stepNumber: history.length,
+                xIsNext: !state.xIsNext,
+            }
         });
     }
 
@@ -91,8 +94,8 @@ class Game extends React.Component {
     }
 
     sortMoves() {
-        this.setState({
-            history: this.state.history.reverse(),
+        this.setState((state) => {
+            return {history: state.history.reverse()}
         });
     }
 
